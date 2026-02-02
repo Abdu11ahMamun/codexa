@@ -1,0 +1,99 @@
+import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
+import { BRAND } from "../../constants/brand";
+import { Logo } from "../shared/Logo";
+import { SocialIcon } from "../shared/SocialIcon";
+
+export function Footer() {
+  return (
+    <footer className="mt-20 border-t border-slate-200 bg-gradient-to-b from-white to-slate-50">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-4">
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3">
+              <Logo />
+              <div>
+                <div className="text-base font-bold text-slate-900">{BRAND.name}</div>
+                <div className="text-xs text-slate-500">Digital Solutions</div>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              Building relationships through innovative technology solutions. Your trusted partner in digital transformation.
+            </p>
+            <div className="mt-4 flex items-center gap-2">
+              <SocialIcon href="#" label="Facebook" brand="facebook">
+                <Facebook className="h-4 w-4" />
+              </SocialIcon>
+              <SocialIcon href="#" label="LinkedIn" brand="linkedin">
+                <Linkedin className="h-4 w-4" />
+              </SocialIcon>
+              <SocialIcon href="#" label="Instagram" brand="instagram">
+                <Instagram className="h-4 w-4" />
+              </SocialIcon>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Quick Links</h3>
+            <ul className="mt-4 space-y-2">
+              {['Home', 'About Us', 'Services', 'Contact'].map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase().replace(' ', '')}`} className="text-sm text-slate-600 transition hover:text-slate-900">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Services</h3>
+            <ul className="mt-4 space-y-2">
+              {['Web Development', 'App Development', 'IT Consultancy', 'UI/UX Design'].map((service) => (
+                <li key={service}>
+                  <a href="#services" className="text-sm text-slate-600 transition hover:text-slate-900">
+                    {service}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Contact</h3>
+            <ul className="mt-4 space-y-3">
+              <li className="flex items-start gap-2 text-sm text-slate-600">
+                <Mail className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>hello@codexa.dev</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-slate-600">
+                <Phone className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>+880 1X XXX XXXX</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-slate-600">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>Dhaka, Bangladesh</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-8 border-t border-slate-200 pt-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-slate-500">
+              © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-xs text-slate-500">
+              <a href="#" className="transition hover:text-slate-900">Privacy Policy</a>
+              <a href="#" className="transition hover:text-slate-900">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
