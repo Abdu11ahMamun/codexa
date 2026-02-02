@@ -66,14 +66,53 @@ function Reveal({ children, delay = 0 }) {
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     runSanityChecks();
+    
+    // Smooth scrolling
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Loading animation
+    const timer = setTimeout(() => setLoading(false), 1500);
+    
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      document.documentElement.style.scrollBehavior = '';
+      clearTimeout(timer);
+    };
   }, []);
+
+  if (loading) {
+    return (
+      <motion.div
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-white"
+      >
+        <div className="text-center">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="mx-auto mb-4 h-12 w-12 rounded-xl border-4 border-slate-200 border-t-slate-900"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-lg font-bold tracking-tight text-slate-900"
+          >
+            {BRAND.name}
+          </motion.div>
+          <div className="text-xs text-slate-500">{BRAND.tagline}</div>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -300,7 +339,13 @@ function Hero() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.6, ease, delay: 0.05 }}
-                  className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+                  className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+                  style={{
+                    background: 'linear-gradient(135deg, #0F172A 0%, #334155 50%, #0F172A 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
                 >
                   {active.title}
                 </motion.h1>
@@ -412,14 +457,14 @@ function Hero() {
 
 function TrustStrip() {
   const items = [
-    { icon: ShieldCheck, t: "Secure practices" },
-    { icon: Clock3, t: "On-time delivery" },
-    { icon: Headphones, t: "Responsive support" },
-    { icon: Layers, t: "Clean structure" },
+    { icon: ShieldCheck, t: "Secure practices", stat: "100% Safe" },
+    { icon: Clock3, t: "On-time delivery", stat: "98% Success" },
+    { icon: Headphones, t: "24/7 Support", stat: "< 1hr Response" },
+    { icon: Layers, t: "500+ Projects", stat: "Delivered" },
   ];
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white">
+    <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 shadow-lg">
       <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((it, i) => {
           const Icon = it.icon;
@@ -431,7 +476,7 @@ function TrustStrip() {
               viewport={{ once: true, margin: "-120px" }}
               transition={{ duration: 0.6, ease, delay: i * 0.05 }}
               className={cn(
-                "flex items-center gap-3 px-5 py-5",
+                "group flex items-center gap-4 px-6 py-6 transition-all hover:bg-white",
                 "border-slate-200",
                 i % 2 === 1 ? "sm:border-l" : "",
                 i >= 2 ? "lg:border-l" : "",
@@ -439,12 +484,15 @@ function TrustStrip() {
                 i === 1 ? "sm:border-t-0" : ""
               )}
             >
-              <div className="grid h-10 w-10 place-items-center rounded-xl bg-slate-50">
-                <Icon className="h-4 w-4" style={{ color: BRAND.primary }} />
+              <div 
+                className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white shadow-sm transition-transform group-hover:scale-110"
+                style={{ boxShadow: `0 4px 14px ${BRAND.primary}15` }}
+              >
+                <Icon className="h-5 w-5" style={{ color: BRAND.primary }} />
               </div>
               <div>
-                <div className="text-sm font-semibold text-slate-900">{it.t}</div>
-                <div className="text-xs text-slate-500">Business-ready quality</div>
+                <div className="text-sm font-bold text-slate-900">{it.t}</div>
+                <div className="text-xs font-semibold" style={{ color: BRAND.primary }}>{it.stat}</div>
               </div>
             </motion.div>
           );
@@ -833,17 +881,93 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-white">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <Logo />
-            <div>
-              <div className="text-sm font-semibold text-slate-900">{BRAND.name}</div>
-              <div className="text-xs text-slate-500">Home • About • Services • Contact</div>
+    <footer className="mt-20 border-t border-slate-200 bg-gradient-to-b from-white to-slate-50">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-4">
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-3">
+              <Logo />
+              <div>
+                <div className="text-base font-bold text-slate-900">{BRAND.name}</div>
+                <div className="text-xs text-slate-500">Digital Solutions</div>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              Building relationships through innovative technology solutions. Your trusted partner in digital transformation.
+            </p>
+            <div className="mt-4 flex items-center gap-2">
+              <SocialIcon href="#" label="Facebook" brand="facebook">
+                <Facebook className="h-4 w-4" />
+              </SocialIcon>
+              <SocialIcon href="#" label="LinkedIn" brand="linkedin">
+                <Linkedin className="h-4 w-4" />
+              </SocialIcon>
+              <SocialIcon href="#" label="Instagram" brand="instagram">
+                <Instagram className="h-4 w-4" />
+              </SocialIcon>
             </div>
           </div>
-          <div className="text-xs text-slate-500">© {new Date().getFullYear()} Codexa. All rights reserved.</div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Quick Links</h3>
+            <ul className="mt-4 space-y-2">
+              {['Home', 'About Us', 'Services', 'Contact'].map((link) => (
+                <li key={link}>
+                  <a href={`#${link.toLowerCase().replace(' ', '')}`} className="text-sm text-slate-600 transition hover:text-slate-900">
+                    {link}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Services</h3>
+            <ul className="mt-4 space-y-2">
+              {['Web Development', 'App Development', 'IT Consultancy', 'UI/UX Design'].map((service) => (
+                <li key={service}>
+                  <a href="#services" className="text-sm text-slate-600 transition hover:text-slate-900">
+                    {service}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-sm font-bold text-slate-900">Contact</h3>
+            <ul className="mt-4 space-y-3">
+              <li className="flex items-start gap-2 text-sm text-slate-600">
+                <Mail className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>hello@codexa.dev</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-slate-600">
+                <Phone className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>+880 1X XXX XXXX</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-slate-600">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
+                <span>Dhaka, Bangladesh</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-8 border-t border-slate-200 pt-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-slate-500">
+              © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+            </p>
+            <div className="flex gap-6 text-xs text-slate-500">
+              <a href="#" className="transition hover:text-slate-900">Privacy Policy</a>
+              <a href="#" className="transition hover:text-slate-900">Terms of Service</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
@@ -899,6 +1023,14 @@ function FieldText({ label, placeholder, rows = 4 }) {
 
 function Background() {
   const reduceMotion = useReducedMotion();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [reduceMotion]);
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-50">
@@ -906,9 +1038,18 @@ function Background() {
 
       <div className="absolute inset-0 opacity-[0.22] [background-image:radial-gradient(rgba(15,23,42,0.18)_1px,transparent_1px)] [background-size:22px_22px]" />
 
-      <div className="absolute -left-40 top-20 h-80 w-80 rounded-[42%] bg-blue-100/55 blur-3xl" />
-      <div className="absolute right-[-140px] top-[-70px] h-[420px] w-[420px] rounded-[45%] bg-rose-100/45 blur-3xl" />
-      <div className="absolute right-24 bottom-[-160px] h-[380px] w-[380px] rounded-[46%] bg-indigo-100/45 blur-3xl" />
+      <motion.div 
+        className="absolute -left-40 top-20 h-80 w-80 rounded-[42%] bg-blue-100/55 blur-3xl"
+        style={{ y: reduceMotion ? 0 : scrollY * 0.1 }}
+      />
+      <motion.div 
+        className="absolute right-[-140px] top-[-70px] h-[420px] w-[420px] rounded-[45%] bg-rose-100/45 blur-3xl"
+        style={{ y: reduceMotion ? 0 : scrollY * 0.15 }}
+      />
+      <motion.div 
+        className="absolute right-24 bottom-[-160px] h-[380px] w-[380px] rounded-[46%] bg-indigo-100/45 blur-3xl"
+        style={{ y: reduceMotion ? 0 : scrollY * -0.1 }}
+      />
 
       {!reduceMotion && (
         <motion.div
@@ -928,9 +1069,9 @@ function ShapeBand({ tone }) {
   const c2 = tone === "blue" ? "rgba(37,99,235,0.06)" : "rgba(15,23,42,0.04)";
 
   return (
-    <div aria-hidden className="relative -mb-8 mt-10">
-      <div className="h-24 w-full bg-gradient-to-b from-white via-white to-transparent" />
-      <svg className="absolute left-0 top-0 h-24 w-full" viewBox="0 0 1440 140" preserveAspectRatio="none">
+    <div aria-hidden className="relative my-12">
+      <div className="mx-auto h-px max-w-7xl bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <svg className="absolute left-0 top-0 h-24 w-full opacity-30" viewBox="0 0 1440 140" preserveAspectRatio="none">
         <path
           d="M0,64 C160,110 320,120 480,92 C640,64 800,10 960,20 C1120,30 1280,92 1440,64 L1440,0 L0,0 Z"
           fill={c1}
