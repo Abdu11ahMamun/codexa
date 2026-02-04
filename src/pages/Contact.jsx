@@ -39,10 +39,10 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    value: "Dhaka, Bangladesh",
-    description: "Schedule an appointment",
+    value: "House# 9, Road# 13(New)",
+    description: "Dhanmondi, Dhaka - 1209",
     color: "#10B981",
-    href: "#",
+    href: "https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6",
   },
   {
     icon: Clock,
@@ -271,7 +271,8 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Address</div>
-                      <div className="text-white">Dhaka, Bangladesh</div>
+                      <div className="text-white">House# 9, Road# 13(New)</div>
+                      <div className="text-white/80 text-sm">Dhanmondi, Dhaka - 1209</div>
                     </div>
                   </div>
                 </div>
@@ -338,21 +339,38 @@ export function Contact() {
         </div>
       </Section>
 
-      {/* Map Section (Optional placeholder) */}
+      {/* Map Section */}
       <Section className="pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
-          className="rounded-2xl overflow-hidden border border-slate-200 h-[400px] bg-slate-100 flex items-center justify-center"
+          className="rounded-2xl overflow-hidden border border-slate-200 h-[400px]"
         >
-          <div className="text-center">
-            <MapPin className="h-12 w-12 mx-auto text-slate-300 mb-4" />
-            <p className="text-slate-500">Interactive map coming soon</p>
-            <p className="text-sm text-slate-400 mt-1">Dhaka, Bangladesh</p>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.2687026447197!2d90.37299807606584!3d23.746619088628995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b7a55cd52d%3A0x7dedfdf3accb7092!2sCodexa%20IT!5e0!3m2!1sen!2sbd!4v1707139200000!5m2!1sen!2sbd"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Codexa IT Location - House# 9, Road# 13(New), Dhanmondi, Dhaka"
+          />
         </motion.div>
+        <div className="mt-4 text-center">
+          <a 
+            href="https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium transition hover:gap-3"
+            style={{ color: '#10B981' }}
+          >
+            <MapPin className="h-4 w-4" />
+            Open in Google Maps
+          </a>
+        </div>
       </Section>
     </>
   );

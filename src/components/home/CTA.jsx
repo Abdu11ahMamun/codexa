@@ -39,7 +39,9 @@ export function CTA() {
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(16,185,129,0.2)' }}>
                   <MapPin className="h-4 w-4" style={{ color: '#10B981' }} />
                 </span>
-                Dhaka (Remote)
+                <a href="https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6" target="_blank" rel="noopener noreferrer" className="text-white/75 hover:text-white transition">
+                  Dhanmondi, Dhaka - 1209
+                </a>
               </div>
             </div>
           </Reveal>

@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   ArrowRight, 
-  MapPin, 
   Clock, 
   Briefcase, 
   Users, 
@@ -11,7 +9,6 @@ import {
   Coffee,
   GraduationCap,
   Gift,
-  ChevronDown,
   Send
 } from "lucide-react";
 import { ease, BRAND } from "../constants/brand";
@@ -27,12 +24,6 @@ const benefits = [
     title: "Flexible Hours",
     description: "Work when you're most productive with our flexible scheduling.",
     color: "#2563EB",
-  },
-  {
-    icon: MapPin,
-    title: "Remote Friendly",
-    description: "Work from anywhere - home, office, or your favorite café.",
-    color: "#8B5CF6",
   },
   {
     icon: GraduationCap,
@@ -60,180 +51,12 @@ const benefits = [
   },
 ];
 
-const openPositions = [
-  {
-    id: 1,
-    title: "Senior Full-Stack Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote / Dhaka",
-    experience: "3-5 years",
-    description: "We're looking for an experienced full-stack developer to join our engineering team and help build scalable web applications.",
-    requirements: [
-      "Proficiency in React, Node.js, and TypeScript",
-      "Experience with cloud services (AWS/GCP)",
-      "Strong understanding of database design",
-      "Excellent problem-solving skills",
-      "Good communication skills",
-    ],
-    color: "#2563EB",
-  },
-  {
-    id: 2,
-    title: "UI/UX Designer",
-    department: "Design",
-    type: "Full-time",
-    location: "Remote / Dhaka",
-    experience: "2-4 years",
-    description: "Join our design team to create beautiful, user-centered interfaces for our clients' products.",
-    requirements: [
-      "Proficiency in Figma and design tools",
-      "Strong portfolio of UI/UX work",
-      "Understanding of design systems",
-      "User research experience",
-      "Collaboration skills",
-    ],
-    color: "#8B5CF6",
-  },
-  {
-    id: 3,
-    title: "Project Manager",
-    department: "Operations",
-    type: "Full-time",
-    location: "Dhaka",
-    experience: "3-5 years",
-    description: "Lead project teams and ensure successful delivery of client projects on time and within budget.",
-    requirements: [
-      "PMP or similar certification preferred",
-      "Experience with Agile/Scrum methodologies",
-      "Strong leadership and communication",
-      "Client relationship management",
-      "Risk management experience",
-    ],
-    color: "#06B6D4",
-  },
-  {
-    id: 4,
-    title: "Junior Web Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote / Dhaka",
-    experience: "0-2 years",
-    description: "Start your career with us! We're looking for motivated junior developers eager to learn and grow.",
-    requirements: [
-      "Knowledge of HTML, CSS, JavaScript",
-      "Familiarity with React or Vue.js",
-      "Willingness to learn",
-      "Good communication skills",
-      "Fresh graduates welcome",
-    ],
-    color: "#10B981",
-  },
-];
-
 const culturePoints = [
   { icon: Users, text: "Collaborative Environment", color: "#2563EB" },
   { icon: Zap, text: "Innovation First", color: "#8B5CF6" },
   { icon: Heart, text: "People-Centric Culture", color: "#F43F5E" },
   { icon: GraduationCap, text: "Continuous Learning", color: "#06B6D4" },
 ];
-
-function JobCard({ job }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease }}
-      className="rounded-2xl border border-slate-200 bg-white overflow-hidden"
-      style={{ borderColor: `${job.color}20` }}
-    >
-      <div 
-        className="p-6 cursor-pointer"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <h3 className="text-lg font-semibold text-slate-900">{job.title}</h3>
-            <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-slate-600">
-              <span className="flex items-center gap-1">
-                <Briefcase className="h-4 w-4" style={{ color: job.color }} />
-                {job.department}
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock className="h-4 w-4" style={{ color: job.color }} />
-                {job.type}
-              </span>
-              <span className="flex items-center gap-1">
-                <MapPin className="h-4 w-4" style={{ color: job.color }} />
-                {job.location}
-              </span>
-            </div>
-          </div>
-          <motion.div
-            animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ChevronDown className="h-5 w-5 text-slate-400" />
-          </motion.div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {isExpanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 border-t border-slate-100 pt-4">
-              <p className="text-slate-600 mb-4">{job.description}</p>
-              
-              <div className="mb-4">
-                <div className="text-sm font-semibold text-slate-900 mb-2">Experience Required:</div>
-                <div 
-                  className="inline-block px-3 py-1 rounded-full text-sm"
-                  style={{ background: `${job.color}15`, color: job.color }}
-                >
-                  {job.experience}
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <div className="text-sm font-semibold text-slate-900 mb-2">Requirements:</div>
-                <ul className="space-y-2">
-                  {job.requirements.map((req, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                      <span 
-                        className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0"
-                        style={{ background: job.color }}
-                      />
-                      {req}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <a
-                href="#apply"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:translate-y-[-2px]"
-                style={{ background: job.color }}
-              >
-                Apply Now
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
 
 export function Careers() {
   return (
@@ -336,17 +159,35 @@ export function Careers() {
             <h2 className="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
               Current Opportunities
             </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-              Find the role that matches your skills and passion. Click on a position to learn more.
-            </p>
           </div>
         </Reveal>
 
-        <div className="space-y-4 max-w-3xl mx-auto">
-          {openPositions.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+          className="max-w-2xl mx-auto text-center py-16 px-8 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-blue-50/30"
+        >
+          <div 
+            className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
+            style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.1), rgba(139,92,246,0.1))' }}
+          >
+            <Briefcase className="h-10 w-10" style={{ color: '#2563EB' }} />
+          </div>
+          <h3 className="text-2xl font-semibold text-slate-900">Coming Soon</h3>
+          <p className="mt-4 text-slate-600 max-w-md mx-auto">
+            We're preparing exciting new opportunities. Check back soon or submit your application below to be considered for future openings.
+          </p>
+          <a
+            href="#apply"
+            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl text-sm font-semibold text-white transition hover:translate-y-[-2px]"
+            style={{ background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 100%)' }}
+          >
+            Submit Your Resume
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </motion.div>
       </Section>
 
       <ShapeBand tone="slate" />
@@ -393,9 +234,9 @@ export function Careers() {
                     className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 transition focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   >
                     <option value="">Select a position</option>
-                    {openPositions.map((job) => (
-                      <option key={job.id} value={job.title}>{job.title}</option>
-                    ))}
+                    <option value="developer">Developer</option>
+                    <option value="designer">Designer</option>
+                    <option value="project-manager">Project Manager</option>
                     <option value="other">Other</option>
                   </select>
                 </div>

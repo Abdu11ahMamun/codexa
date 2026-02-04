@@ -92,7 +92,9 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-600">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" style={{ color: '#10B981' }} />
-                <span>Dhaka, Bangladesh</span>
+                <a href="https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 transition">
+                  House# 9, Road# 13(New), Dhanmondi, Dhaka - 1209
+                </a>
               </li>
             </ul>
           </div>

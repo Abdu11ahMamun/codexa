@@ -57,7 +57,7 @@ export function Hero() {
     }, 200);
   };
 
-  useInterval(scheduleNext, hovered || reduceMotion || !autoplayOn ? null : 5000);
+  useInterval(scheduleNext, hovered || reduceMotion || !autoplayOn ? null : 3000);
   const active = slides[index];
 
   return (
