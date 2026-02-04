@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Facebook, Linkedin, Instagram } from "lucide-react";
+import { ArrowRight, Facebook, Linkedin, Instagram, Menu, X } from "lucide-react";
 import { BRAND, ease } from "../../constants/brand";
 import { cn } from "../../utils/helpers";
 import { Logo } from "../shared/Logo";
@@ -9,7 +10,17 @@ import { SocialIcon } from "../shared/SocialIcon";
 export function Header({ scrolled }) {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
   
+  const navLinks = [
+    { t: "Home", to: "/" },
+    { t: "About", to: "/about" },
+    { t: "Services", to: "/services" },
+    { t: "Careers", to: "/careers" },
+    { t: "Contact", to: "/contact" },
+  ];
+
   return (
     <div className="sticky top-0 z-50">
       <div className={cn("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", scrolled ? "py-3" : "py-5")}>
@@ -64,40 +75,40 @@ export function Header({ scrolled }) {
           </motion.div>
           
           <div className="relative flex items-center justify-between gap-4 px-5 py-3 sm:px-6">
-            <motion.div 
-              className="flex items-center gap-3"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                transition={{ duration: 0.5 }}
+            <Link to="/">
+              <motion.div 
+                className="flex items-center gap-3"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Logo size="default" />
+                <motion.div
+                  whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Logo size="default" />
+                </motion.div>
+                <div className="leading-tight">
+                  <div className="text-lg font-bold tracking-tight">{BRAND.name}</div>
+                  <div className="text-xs text-slate-500">{BRAND.tagline}</div>
+                </div>
               </motion.div>
-              <div className="leading-tight">
-                <div className="text-lg font-bold tracking-tight">{BRAND.name}</div>
-                <div className="text-xs text-slate-500">{BRAND.tagline}</div>
-              </div>
-            </motion.div>
+            </Link>
 
             <nav className="hidden items-center gap-1 md:flex">
-              {[
-                { t: "Home", a: "#home" },
-                { t: "About", a: "#about" },
-                { t: "Services", a: "#services" },
-                { t: "Contact", a: "#contact" },
-              ].map((l, idx) => (
-                <motion.a
-                  key={l.t}
-                  href={l.a}
-                  onHoverStart={() => setHoveredLink(idx)}
-                  onHoverEnd={() => setHoveredLink(null)}
-                  className="relative rounded-xl px-5 py-2.5 text-sm font-medium text-slate-700 transition"
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {/* Background glow effect */}
+              {navLinks.map((l, idx) => {
+                const isActive = location.pathname === l.to;
+                return (
+                  <Link
+                    key={l.t}
+                    to={l.to}
+                    onMouseEnter={() => setHoveredLink(idx)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                    className={cn(
+                      "relative rounded-xl px-5 py-2.5 text-sm font-medium transition",
+                      isActive ? "text-blue-600" : "text-slate-700"
+                    )}
+                  >
+                    {/* Background glow effect */}
                   <motion.span
                     className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10"
                     initial={{ opacity: 0 }}
@@ -110,18 +121,27 @@ export function Header({ scrolled }) {
                     className="absolute bottom-1 left-1/2 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
                     initial={{ width: 0, x: '-50%' }}
                     animate={{ 
-                      width: hoveredLink === idx ? '60%' : 0,
+                      width: hoveredLink === idx || isActive ? '60%' : 0,
                       x: '-50%'
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   />
                   
                   <span className="relative z-10">{l.t}</span>
-                </motion.a>
-              ))}
+                </Link>
+              );
+              })}
             </nav>
 
             <div className="flex items-center gap-3">
+              {/* Mobile menu button */}
+              <button
+                className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+              
               <div className="hidden items-center gap-1 sm:flex">
                 <SocialIcon href="#" label="Facebook" brand="facebook">
                   <Facebook className="h-4 w-4" />
@@ -135,6 +155,37 @@ export function Header({ scrolled }) {
               </div>
             </div>
           </div>
+          
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-slate-100"
+            >
+              <nav className="p-4 space-y-1">
+                {navLinks.map((l) => {
+                  const isActive = location.pathname === l.to;
+                  return (
+                    <Link
+                      key={l.t}
+                      to={l.to}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={cn(
+                        "block px-4 py-3 rounded-xl text-sm font-medium transition",
+                        isActive 
+                          ? "bg-blue-50 text-blue-600" 
+                          : "text-slate-700 hover:bg-slate-50"
+                      )}
+                    >
+                      {l.t}
+                    </Link>
+                  );
+                })}
+              </nav>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </div>

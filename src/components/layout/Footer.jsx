@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
 import { BRAND } from "../../constants/brand";
 import { Logo } from "../shared/Logo";
@@ -10,7 +11,7 @@ export function Footer() {
         <div className="grid gap-8 lg:grid-cols-4">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <Logo size="large" />
               <div>
                 <div 
@@ -26,7 +27,7 @@ export function Footer() {
                 </div>
                 <div className="text-xs text-slate-500">Digital Solutions</div>
               </div>
-            </div>
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
               Building relationships through innovative technology solutions. Your trusted partner in digital transformation.
             </p>
@@ -47,11 +48,17 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-bold" style={{ color: '#2563EB' }}>Quick Links</h3>
             <ul className="mt-4 space-y-2">
-              {['Home', 'About Us', 'Services', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(' ', '')}`} className="text-sm text-slate-600 transition hover:text-violet-600">
-                    {link}
-                  </a>
+              {[
+                { name: 'Home', to: '/' },
+                { name: 'About Us', to: '/about' },
+                { name: 'Services', to: '/services' },
+                { name: 'Careers', to: '/careers' },
+                { name: 'Contact', to: '/contact' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.to} className="text-sm text-slate-600 transition hover:text-violet-600">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -63,9 +70,9 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {['Web Development', 'App Development', 'IT Consultancy', 'UI/UX Design'].map((service) => (
                 <li key={service}>
-                  <a href="#services" className="text-sm text-slate-600 transition hover:text-cyan-600">
+                  <Link to="/services" className="text-sm text-slate-600 transition hover:text-cyan-600">
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
