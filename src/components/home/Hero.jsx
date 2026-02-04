@@ -82,8 +82,8 @@ export function Hero() {
 
           <div className="grid items-center gap-0 lg:grid-cols-2">
             <div className="p-8 sm:p-12 lg:p-16">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-medium text-slate-700">
-                <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: BRAND.primary }} />
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-gradient-to-r from-blue-50 to-violet-50 px-4 py-2 text-xs font-medium text-slate-700">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-blue-500 to-violet-500" />
                 Digitization • IT Services • ITES Solutions
               </div>
 
@@ -96,7 +96,7 @@ export function Hero() {
                   transition={{ duration: 0.6, ease, delay: 0.05 }}
                   className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
                   style={{
-                    background: 'linear-gradient(135deg, #0F172A 0%, #334155 50%, #0F172A 100%)',
+                    background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 40%, #F43F5E 80%, #F97316 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -122,14 +122,15 @@ export function Hero() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:translate-y-[-2px] hover:shadow-xl active:translate-y-0"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:translate-y-[-2px] hover:shadow-xl active:translate-y-0"
+                  style={{ background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 100%)' }}
                 >
                   {active.cta || "Book for Consultation"}
                   <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
                 </a>
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-4 text-base font-semibold text-slate-800 transition hover:border-slate-300 hover:bg-slate-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-violet-200 bg-white px-6 py-4 text-base font-semibold text-violet-700 transition hover:border-violet-300 hover:bg-violet-50"
                 >
                   Explore Services
                 </a>
@@ -137,19 +138,19 @@ export function Hero() {
 
               <div className="mt-6 grid gap-2 sm:grid-cols-3">
                 {[
-                  "Minimal design",
-                  "Fast performance",
-                  "Business-ready",
+                  { text: "Minimal design", color: "#2563EB" },
+                  { text: "Fast performance", color: "#8B5CF6" },
+                  { text: "Business-ready", color: "#10B981" },
                 ].map((b, i) => (
                   <motion.div
-                    key={b}
+                    key={b.text}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease, delay: 0.08 + i * 0.06 }}
                     className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs text-slate-700"
                   >
-                    <CheckCircle2 className="h-4 w-4" style={{ color: BRAND.primary }} />
-                    {b}
+                    <CheckCircle2 className="h-4 w-4" style={{ color: b.color }} />
+                    {b.text}
                   </motion.div>
                 ))}
               </div>
@@ -161,8 +162,9 @@ export function Hero() {
                       key={s.k}
                       onClick={() => setIndex(i)}
                       className={`h-2 rounded-full transition-all ${
-                        i === index ? "w-10 bg-slate-900" : "w-2 bg-slate-300 hover:bg-slate-400"
+                        i === index ? "w-10" : "w-2 bg-slate-300 hover:bg-slate-400"
                       }`}
+                      style={i === index ? { background: 'linear-gradient(90deg, #2563EB, #8B5CF6)' } : {}}
                       aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}

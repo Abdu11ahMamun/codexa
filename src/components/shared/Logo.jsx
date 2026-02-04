@@ -3,8 +3,19 @@ import { BRAND } from "../../constants/brand";
 import logoImg from "../../assets/Codexa IT logo.png";
 
 export function Logo({ size = "default" }) {
-  const sizeClasses = size === "large" ? "h-12 w-12" : "h-10 w-10";
-  const imgSize = size === "large" ? "h-10 w-10" : "h-8 w-8";
+  const sizeClasses = {
+    small: "h-10 w-10",
+    default: "h-12 w-12",
+    large: "h-14 w-14",
+    xlarge: "h-20 w-20"
+  }[size] || "h-12 w-12";
+  
+  const imgSize = {
+    small: "h-8 w-8",
+    default: "h-10 w-10",
+    large: "h-11 w-11",
+    xlarge: "h-16 w-16"
+  }[size] || "h-10 w-10";
 
   return (
     <motion.div 

@@ -1,5 +1,4 @@
 import { useReducedMotion } from "framer-motion";
-import { BRAND } from "../../constants/brand";
 import { services } from "../../constants/services";
 import { Reveal } from "../shared/Reveal";
 import { ServiceCard } from "./ServiceCard";
@@ -9,16 +8,29 @@ export function Services() {
 
   return (
     <div id="services" className="relative">
-      <div aria-hidden className="pointer-events-none absolute -right-24 top-6 h-60 w-60 rounded-[46%] bg-rose-100/50 blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute left-[-90px] bottom-[-60px] h-72 w-72 rounded-[44%] bg-slate-100/70 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-24 top-6 h-60 w-60 rounded-[46%] bg-gradient-to-br from-rose-100/60 to-orange-100/40 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute left-[-90px] bottom-[-60px] h-72 w-72 rounded-[44%] bg-gradient-to-br from-violet-100/50 to-blue-100/40 blur-3xl" />
 
       <Reveal>
         <div className="text-center">
-          <div className="text-xs font-semibold tracking-widest text-slate-500">SERVICES</div>
+          <div 
+            className="inline-block text-xs font-semibold tracking-widest px-3 py-1 rounded-full"
+            style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.1), rgba(139,92,246,0.1))', color: '#8B5CF6' }}
+          >
+            SERVICES
+          </div>
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
             What can we do for you?
           </h2>
-          <div className="mt-1 text-xs font-semibold tracking-widest" style={{ color: BRAND.primary }}>
+          <div 
+            className="mt-1 text-xs font-semibold tracking-widest"
+            style={{ 
+              background: 'linear-gradient(90deg, #2563EB, #8B5CF6)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
             We solve real problem
           </div>
         </div>

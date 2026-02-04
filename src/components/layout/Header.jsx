@@ -63,9 +63,9 @@ export function Header({ scrolled }) {
             />
           </motion.div>
           
-          <div className="relative flex items-center justify-between gap-4 px-5 py-4 sm:px-6">
+          <div className="relative flex items-center justify-between gap-4 px-5 py-3 sm:px-6">
             <motion.div 
-              className="flex items-center gap-4"
+              className="flex items-center gap-3"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -73,10 +73,10 @@ export function Header({ scrolled }) {
                 whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                 transition={{ duration: 0.5 }}
               >
-                <Logo />
+                <Logo size="default" />
               </motion.div>
               <div className="leading-tight">
-                <div className="text-base font-bold tracking-tight">{BRAND.name}</div>
+                <div className="text-lg font-bold tracking-tight">{BRAND.name}</div>
                 <div className="text-xs text-slate-500">{BRAND.tagline}</div>
               </div>
             </motion.div>
@@ -133,40 +133,6 @@ export function Header({ scrolled }) {
                   <Instagram className="h-4 w-4" />
                 </SocialIcon>
               </div>
-
-              <motion.a
-                href="#contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                {/* Animated gradient background */}
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '100%' }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  style={{ backgroundSize: '200% 100%' }}
-                />
-                
-                {/* Glow effect */}
-                <motion.span
-                  className="absolute inset-0 rounded-xl opacity-0 blur-xl"
-                  style={{ background: 'rgba(37, 99, 235, 0.6)' }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                
-                <span className="relative z-10">Get a Quote</span>
-                <motion.span
-                  className="relative z-10"
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </motion.span>
-              </motion.a>
             </div>
           </div>
         </motion.div>
