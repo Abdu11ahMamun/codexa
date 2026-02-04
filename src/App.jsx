@@ -13,6 +13,7 @@ import { ClientStrip } from "./components/home/ClientStrip";
 import { WhoWeAre } from "./components/home/WhoWeAre";
 import { Services } from "./components/home/Services";
 import { WhyChooseUs } from "./components/home/WhyChooseUs";
+import { GlobalReach } from "./components/home/GlobalReach";
 import { CTA } from "./components/home/CTA";
 
 // Shared Components
@@ -77,6 +78,10 @@ export default function App() {
 
         <Section className="pb-16">
           <WhyChooseUs />
+        </Section>
+
+        <Section className="py-16">
+          <GlobalReach />
         </Section>
 
         <Section className="pb-16">
