@@ -77,20 +77,10 @@ export function Header({ scrolled }) {
           <div className="relative flex items-center justify-between gap-4 px-5 py-3 sm:px-6">
             <Link to="/">
               <motion.div 
-                className="flex items-center gap-3"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <motion.div
-                  whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Logo size="default" />
-                </motion.div>
-                <div className="leading-tight">
-                  <div className="text-lg font-bold tracking-tight">{BRAND.name}</div>
-                  <div className="text-xs text-slate-500">{BRAND.tagline}</div>
-                </div>
+                <Logo size="default" />
               </motion.div>
             </Link>
 

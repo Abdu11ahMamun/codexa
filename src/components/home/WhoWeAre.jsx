@@ -1,6 +1,7 @@
 import { ArrowRight, Facebook, Linkedin, Instagram } from "lucide-react";
 import { Reveal } from "../shared/Reveal";
 import { SocialIcon } from "../shared/SocialIcon";
+import aboutImage from "../../assets/Codexa Slide 2.png";
 
 export function WhoWeAre() {
   return (
@@ -75,7 +76,7 @@ export function WhoWeAre() {
             <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
               <img
                 alt="Team / work"
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80"
+                src={aboutImage}
                 className="h-[320px] w-full object-cover sm:h-[380px]"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-white/70 via-transparent to-transparent" />

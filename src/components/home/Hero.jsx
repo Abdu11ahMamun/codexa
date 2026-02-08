@@ -4,6 +4,17 @@ import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-reac
 import { BRAND, ease } from "../../constants/brand";
 import { useInterval } from "../../hooks/useInterval";
 
+// Import slide images
+import slide1 from "../../assets/Codexa Slide 1.png";
+import slide2 from "../../assets/Codexa Slide 2.png";
+import slide3 from "../../assets/Codexa Slide 3.png";
+import slide5 from "../../assets/Codexa Slide 5.png";
+import slide6 from "../../assets/Codexa Slide 6.png";
+import slide7 from "../../assets/Codexa Slide 7.png";
+import slide8 from "../../assets/Codexa Slide 8.png";
+import slide9 from "../../assets/Codexa Slide 9.png";
+import slide10 from "../../assets/Codexa Slide 10.png";
+
 export function Hero() {
   const reduceMotion = useReducedMotion();
 
@@ -14,21 +25,63 @@ export function Hero() {
         title: "WE BUILD RELATIONSHIP, NOT JUST ANOTHER CLIENT",
         desc: "With the mission of digitization and with the vision of becoming the trusted name around the world.",
         cta: "Book for Consultation",
-        img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+        img: slide1,
       },
       {
         k: "s2",
         title: "WE PROVIDE THE FASTEST SERVICE",
         desc: "We routinely access global skilled resources and leading-edge technology to deliver large-scale projects.",
         cta: "Get a Quote",
-        img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+        img: slide2,
       },
       {
         k: "s3",
         title: "INNOVATIVE & DEDICATED SOLUTIONS",
         desc: "Platforms to manage, govern and distribute data in real-time — enabling faster business decisions.",
         cta: "Explore Services",
-        img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=80",
+        img: slide3,
+      },
+      {
+        k: "s5",
+        title: "TRUSTED TECHNOLOGY PARTNER",
+        desc: "Building long-term partnerships through reliable, scalable solutions tailored to your business needs.",
+        cta: "Start Your Journey",
+        img: slide5,
+      },
+      {
+        k: "s6",
+        title: "GLOBAL EXPERTISE, LOCAL TOUCH",
+        desc: "Combining worldwide best practices with personalized service to drive your digital transformation.",
+        cta: "Learn More",
+        img: slide6,
+      },
+      {
+        k: "s7",
+        title: "EMPOWERING YOUR BUSINESS",
+        desc: "Delivering cutting-edge IT solutions that accelerate growth and maximize efficiency.",
+        cta: "Discover Solutions",
+        img: slide7,
+      },
+      {
+        k: "s8",
+        title: "INNOVATION AT EVERY STEP",
+        desc: "From concept to deployment, we bring innovation and excellence to every project we undertake.",
+        cta: "Work With Us",
+        img: slide8,
+      },
+      {
+        k: "s9",
+        title: "YOUR SUCCESS, OUR MISSION",
+        desc: "Dedicated teams working around the clock to ensure your projects succeed beyond expectations.",
+        cta: "Get Started",
+        img: slide9,
+      },
+      {
+        k: "s10",
+        title: "DRIVING DIGITAL EXCELLENCE",
+        desc: "Transform your business with our comprehensive suite of digital services and solutions.",
+        cta: "Contact Us",
+        img: slide10,
       },
     ],
     []
