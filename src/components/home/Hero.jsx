@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
-import { BRAND, ease } from "../../constants/brand";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ease } from "../../constants/brand";
 import { useInterval } from "../../hooks/useInterval";
 
 // Import slide images
@@ -90,7 +90,6 @@ export function Hero() {
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [autoplayOn, setAutoplayOn] = useState(false);
-  const [transitioning, setTransitioning] = useState(false);
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -99,61 +98,49 @@ export function Hero() {
   }, [reduceMotion]);
 
   const scheduleNext = () => {
-    if (reduceMotion) {
-      setIndex((i) => (i + 1) % slides.length);
-      return;
-    }
-    setTransitioning(true);
-    window.setTimeout(() => {
-      setIndex((i) => (i + 1) % slides.length);
-      window.setTimeout(() => setTransitioning(false), 350);
-    }, 200);
+    setIndex((i) => (i + 1) % slides.length);
   };
 
-  useInterval(scheduleNext, hovered || reduceMotion || !autoplayOn ? null : 3000);
+  useInterval(scheduleNext, hovered || reduceMotion || !autoplayOn ? null : 5000);
   const active = slides[index];
 
   return (
-    <div id="home" className="relative py-8">
+    <div id="home" className="relative py-6">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl"
+          className="relative overflow-hidden rounded-2xl"
+          style={{ minHeight: '600px' }}
         >
-          <AnimatePresence>
-            {transitioning && !reduceMotion && (
-              <motion.div
-                className="pointer-events-none absolute inset-0 z-10 bg-white/60"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, ease }}
-              />
-            )}
+          {/* Background Image */}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.img
+              key={active.img}
+              src={active.img}
+              alt="Hero"
+              className="absolute inset-0 h-full w-full object-cover"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease }}
+            />
           </AnimatePresence>
 
-          <div className="grid items-center gap-0 lg:grid-cols-2">
-            <div className="p-8 sm:p-12 lg:p-16">
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-gradient-to-r from-blue-50 to-violet-50 px-4 py-2 text-xs font-medium text-slate-700">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-blue-500 to-violet-500" />
-                Digitization • IT Services • ITES Solutions
-              </div>
+          {/* Clean overlay */}
+          <div className="absolute inset-0 bg-slate-900/50" />
 
+          {/* Content */}
+          <div className="relative z-10 flex h-full min-h-[600px] flex-col justify-center px-8 py-16 sm:px-16 lg:px-24">
+            <div className="max-w-2xl">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.h1
                   key={active.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.6, ease, delay: 0.05 }}
-                  className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
-                  style={{
-                    background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 40%, #F43F5E 80%, #F97316 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease }}
+                  className="text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl"
                 >
                   {active.title}
                 </motion.h1>
@@ -162,100 +149,71 @@ export function Hero() {
               <AnimatePresence mode="wait" initial={false}>
                 <motion.p
                   key={active.desc}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.6, ease, delay: 0.1 }}
-                  className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg"
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease, delay: 0.05 }}
+                  className="mt-6 max-w-lg text-base text-white/80 sm:text-lg"
                 >
                   {active.desc}
                 </motion.p>
               </AnimatePresence>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white shadow-lg transition hover:translate-y-[-2px] hover:shadow-xl active:translate-y-0"
-                  style={{ background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 100%)' }}
+                  className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-slate-900 transition hover:bg-white/90"
                 >
-                  {active.cta || "Book for Consultation"}
-                  <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
+                  {active.cta || "Get Started"}
+                  <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
                   href="#services"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-violet-200 bg-white px-6 py-4 text-base font-semibold text-violet-700 transition hover:border-violet-300 hover:bg-violet-50"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
                 >
-                  Explore Services
+                  Learn More
                 </a>
-              </div>
-
-              <div className="mt-6 grid gap-2 sm:grid-cols-3">
-                {[
-                  { text: "Minimal design", color: "#2563EB" },
-                  { text: "Fast performance", color: "#8B5CF6" },
-                  { text: "Business-ready", color: "#10B981" },
-                ].map((b, i) => (
-                  <motion.div
-                    key={b.text}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease, delay: 0.08 + i * 0.06 }}
-                    className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs text-slate-700"
-                  >
-                    <CheckCircle2 className="h-4 w-4" style={{ color: b.color }} />
-                    {b.text}
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-7 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  {slides.map((s, i) => (
-                    <button
-                      key={s.k}
-                      onClick={() => setIndex(i)}
-                      className={`h-2 rounded-full transition-all ${
-                        i === index ? "w-10" : "w-2 bg-slate-300 hover:bg-slate-400"
-                      }`}
-                      style={i === index ? { background: 'linear-gradient(90deg, #2563EB, #8B5CF6)' } : {}}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
-                    className="rounded-lg border border-slate-200 bg-white p-2 text-slate-700 transition hover:bg-slate-50"
-                    aria-label="Previous slide"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={() => setIndex((i) => (i + 1) % slides.length)}
-                    className="rounded-lg border border-slate-200 bg-white p-2 text-slate-700 transition hover:bg-slate-50"
-                    aria-label="Next slide"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                </div>
               </div>
             </div>
 
-            <div className="relative h-[280px] w-full bg-slate-100 sm:h-[360px] lg:h-[480px]">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.img
-                  key={active.img}
-                  src={active.img}
-                  alt="Hero"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.7, ease, delay: 0.05 }}
-                />
-              </AnimatePresence>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/20 to-transparent" />
+            {/* Navigation - Bottom right */}
+            <div className="absolute bottom-8 right-8 flex items-center gap-4 sm:right-16 lg:right-24">
+              <div className="flex items-center gap-1.5">
+                {slides.map((s, i) => (
+                  <button
+                    key={s.k}
+                    onClick={() => setIndex(i)}
+                    className={`h-1.5 rounded-full transition-all ${
+                      i === index ? "w-8 bg-white" : "w-1.5 bg-white/40 hover:bg-white/60"
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
+                  className="rounded-md p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => setIndex((i) => (i + 1) % slides.length)}
+                  className="rounded-md p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Slide counter - Bottom left */}
+            <div className="absolute bottom-8 left-8 sm:left-16 lg:left-24">
+              <span className="text-sm font-medium text-white/60">
+                {String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+              </span>
             </div>
           </div>
         </div>
