@@ -176,44 +176,30 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Navigation - Bottom right */}
-            <div className="absolute bottom-8 right-8 flex items-center gap-4 sm:right-16 lg:right-24">
-              <div className="flex items-center gap-1.5">
-                {slides.map((s, i) => (
-                  <button
-                    key={s.k}
-                    onClick={() => setIndex(i)}
-                    className={`h-1.5 rounded-full transition-all ${
-                      i === index ? "w-8 bg-white" : "w-1.5 bg-white/40 hover:bg-white/60"
-                    }`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
-              </div>
+            {/* Side Navigation Arrows */}
+            <button
+              onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-2 text-white/50 transition hover:text-white sm:left-8"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="h-8 w-8" />
+            </button>
+            <button
+              onClick={() => setIndex((i) => (i + 1) % slides.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/50 transition hover:text-white sm:right-8"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="h-8 w-8" />
+            </button>
 
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => setIndex((i) => (i - 1 + slides.length) % slides.length)}
-                  className="rounded-md p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => setIndex((i) => (i + 1) % slides.length)}
-                  className="rounded-md p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Slide counter - Bottom left */}
-            <div className="absolute bottom-8 left-8 sm:left-16 lg:left-24">
-              <span className="text-sm font-medium text-white/60">
-                {String(index + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
-              </span>
+            {/* Bottom progress line */}
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
+              <motion.div
+                className="h-full bg-gradient-to-r from-teal-400 to-teal-500"
+                initial={false}
+                animate={{ width: `${((index + 1) / slides.length) * 100}%` }}
+                transition={{ duration: 0.4, ease }}
+              />
             </div>
           </div>
         </div>
