@@ -27,20 +27,20 @@ export function CTA() {
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(6,182,212,0.2)' }}>
                   <Mail className="h-4 w-4" style={{ color: '#06B6D4' }} />
                 </span>
-                hello@codexa.dev
+                hello@codexaitbd.com
               </div>
               <div className="flex items-center gap-2">
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(139,92,246,0.2)' }}>
                   <Phone className="h-4 w-4" style={{ color: '#8B5CF6' }} />
                 </span>
-                01610-222111, 01917-558034
+                +8801617 558034
               </div>
               <div className="flex items-center gap-2 sm:col-span-2">
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(16,185,129,0.2)' }}>
                   <MapPin className="h-4 w-4" style={{ color: '#10B981' }} />
                 </span>
                 <a href="https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6" target="_blank" rel="noopener noreferrer" className="text-white/75 hover:text-white transition">
-                  Dhanmondi, Dhaka - 1209
+                  Codexa IT, House# 9, Road# 13, Dhanmondi, Dhaka - 1209
                 </a>
               </div>
             </div>

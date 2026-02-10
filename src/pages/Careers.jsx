@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
-  Clock, 
   Briefcase, 
   Users, 
   Heart, 
@@ -20,16 +19,10 @@ import { FieldText } from "../components/shared/FieldText";
 
 const benefits = [
   {
-    icon: Clock,
-    title: "Flexible Hours",
-    description: "Work when you're most productive with our flexible scheduling.",
-    color: "#2563EB",
-  },
-  {
     icon: GraduationCap,
     title: "Learning & Growth",
     description: "Continuous learning opportunities and skill development programs.",
-    color: "#06B6D4",
+    color: "#2563EB",
   },
   {
     icon: Gift,

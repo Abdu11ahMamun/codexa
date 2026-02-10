@@ -84,19 +84,16 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-start gap-2 text-sm text-slate-600">
                 <Mail className="h-4 w-4 mt-0.5 shrink-0" style={{ color: '#06B6D4' }} />
-                <span>hello@codexa.dev</span>
+                <span>hello@codexaitbd.com</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-600">
                 <Phone className="h-4 w-4 mt-0.5 shrink-0" style={{ color: '#8B5CF6' }} />
-                <div className="flex flex-col">
-                  <span>01610-222111</span>
-                  <span>01917-558034</span>
-                </div>
+                <span>+8801617 558034</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-600">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" style={{ color: '#10B981' }} />
                 <a href="https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-600 transition">
-                  House# 9, Road# 13(New), Dhanmondi, Dhaka - 1209
+                  Codexa IT, House# 9, Road# 13, Dhanmondi, Dhaka - 1209
                 </a>
               </li>
             </ul>

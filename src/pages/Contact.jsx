@@ -40,7 +40,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Visit Us",
     value: "Codexa IT, House# 9, Road# 13",
-    description: "Dhaka - 1209",
+    description: "Dhanmondi, Dhaka - 1209",
     color: "#10B981",
     href: "https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6",
   },
@@ -137,12 +137,12 @@ export function Contact() {
 
       {/* Contact Form & Map */}
       <Section className="py-16">
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Form */}
-          <Reveal>
-            <div>
+          <Reveal className="h-full">
+            <div className="h-full flex flex-col">
               <div 
-                className="inline-block text-xs font-semibold tracking-widest px-3 py-1 rounded-full"
+                className="inline-block text-xs font-semibold tracking-widest px-3 py-1 rounded-full w-fit"
                 style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.1), rgba(139,92,246,0.1))', color: '#2563EB' }}
               >
                 SEND A MESSAGE
@@ -226,10 +226,10 @@ export function Contact() {
           </Reveal>
 
           {/* Info Panel */}
-          <Reveal delay={0.1}>
-            <div className="lg:pl-8">
+          <Reveal delay={0.1} className="h-full">
+            <div className="lg:pl-8 h-full">
               <div 
-                className="p-8 rounded-2xl h-full"
+                className="p-8 rounded-2xl h-full flex flex-col"
                 style={{ background: 'linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #2563EB 100%)' }}
               >
                 <div 
@@ -275,7 +275,7 @@ export function Contact() {
                     <div>
                       <div className="text-sm text-white/60">Address</div>
                       <div className="text-white">Codexa IT, House# 9, Road# 13</div>
-                      <div className="text-white/80 text-sm">Dhaka - 1209</div>
+                      <div className="text-white/80 text-sm">Dhanmondi, Dhaka - 1209</div>
                     </div>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-auto pt-8">
                   <MessageSquare className="h-8 w-8 text-white/20" />
                   <p className="mt-2 text-sm text-white/50 italic">
                     "The best way to predict the future is to create it."
@@ -359,7 +359,7 @@ export function Contact() {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Codexa IT Location - House# 9, Road# 13(New), Dhanmondi, Dhaka"
+            title="Codexa IT Location - House# 9, Road# 13, Dhanmondi, Dhaka - 1209"
           />
         </motion.div>
         <div className="mt-4 text-center">

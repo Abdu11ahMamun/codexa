@@ -2,49 +2,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ease, BRAND } from "../constants/brand";
-import { services } from "../constants/services";
+import { homeServices as services } from "../constants/services";
 import { Section } from "../components/shared/Section";
 import { Reveal } from "../components/shared/Reveal";
 import { ShapeBand } from "../components/shared/ShapeBand";
-
-const processSteps = [
-  {
-    step: "01",
-    title: "Discovery & Planning",
-    description: "We start by understanding your business, goals, and requirements through detailed discussions and analysis.",
-    color: "#2563EB",
-  },
-  {
-    step: "02",
-    title: "Design & Prototype",
-    description: "Our team creates wireframes and prototypes to visualize the solution before development begins.",
-    color: "#8B5CF6",
-  },
-  {
-    step: "03",
-    title: "Development",
-    description: "Using agile methodologies, we build your solution with regular updates and feedback integration.",
-    color: "#06B6D4",
-  },
-  {
-    step: "04",
-    title: "Testing & QA",
-    description: "Rigorous testing ensures your product is bug-free, secure, and performs optimally.",
-    color: "#10B981",
-  },
-  {
-    step: "05",
-    title: "Deployment",
-    description: "We launch your solution and ensure smooth transition with zero downtime.",
-    color: "#F97316",
-  },
-  {
-    step: "06",
-    title: "Support & Maintenance",
-    description: "Ongoing support and maintenance to keep your solution running at its best.",
-    color: "#F43F5E",
-  },
-];
 
 const features = [
   "Custom solutions tailored to your needs",
@@ -135,7 +96,7 @@ function ServicesGrid() {
   return (
     <div className="flex flex-wrap justify-center gap-7" style={{ perspective: 1200 }}>
       {services.map((service, i) => (
-        <div key={service.t} className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] xl:w-[calc(25%-21px)]">
+        <div key={service.t} className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]">
           <ServiceCard
             service={service}
             delay={i * 0.05}
@@ -184,54 +145,6 @@ export function Services() {
       </Section>
 
       <ShapeBand tone="blue" />
-
-      {/* Process Section */}
-      <Section className="py-16">
-        <Reveal>
-          <div className="text-center mb-12">
-            <div 
-              className="inline-block text-xs font-semibold tracking-widest px-3 py-1 rounded-full"
-              style={{ background: 'linear-gradient(90deg, rgba(6,182,212,0.15), rgba(16,185,129,0.1))', color: '#06B6D4' }}
-            >
-              OUR PROCESS
-            </div>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
-              How We Work
-            </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-              Our proven methodology ensures successful project delivery every time.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {processSteps.map((step, i) => (
-            <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease, delay: i * 0.08 }}
-              className="relative p-6 rounded-2xl border border-slate-200 bg-white"
-            >
-              <div 
-                className="text-4xl font-bold opacity-20 mb-2"
-                style={{ color: step.color }}
-              >
-                {step.step}
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.description}</p>
-              <div 
-                className="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-                style={{ background: step.color }}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      <ShapeBand tone="slate" />
 
       {/* Why Choose Us */}
       <Section className="py-16">
