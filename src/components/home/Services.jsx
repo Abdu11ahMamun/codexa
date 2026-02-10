@@ -36,17 +36,18 @@ export function Services() {
         </div>
       </Reveal>
 
-      <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3" style={{ perspective: 1200 }}>
+      <div className="mt-10 flex flex-wrap justify-center gap-7" style={{ perspective: 1200 }}>
         {services.map((c, i) => (
-          <ServiceCard
-            key={c.t}
-            reduceMotion={!!reduceMotion}
-            title={c.t}
-            desc={c.d}
-            accent={c.accent}
-            Icon={c.Icon}
-            delay={i * 0.05}
-          />
+          <div key={c.t} className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]">
+            <ServiceCard
+              reduceMotion={!!reduceMotion}
+              title={c.t}
+              desc={c.d}
+              accent={c.accent}
+              Icon={c.Icon}
+              delay={i * 0.05}
+            />
+          </div>
         ))}
       </div>
     </div>
