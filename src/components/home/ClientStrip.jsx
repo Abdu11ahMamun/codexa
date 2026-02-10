@@ -1,17 +1,23 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+// Import client logos
+import boaLogo from "../../assets/Affiliations/BoA.png";
+import companyCamLogo from "../../assets/Affiliations/Company-cam.png";
+import fnmaLogo from "../../assets/Affiliations/FNMA.png";
+import ppwLogo from "../../assets/Affiliations/PPW.png";
+import vaLogo from "../../assets/Affiliations/VA.png";
+import wellsFargoLogo from "../../assets/Affiliations/Wells fargo.png";
+
 export function ClientStrip() {
   const reduceMotion = useReducedMotion();
   const clients = [
-    { name: "ServiPro", color: "#2563EB" },
-    { name: "XZone IT", color: "#8B5CF6" },
-    { name: "eCraft", color: "#06B6D4" },
-    { name: "DataWorks", color: "#10B981" },
-    { name: "NovaLabs", color: "#F43F5E" },
-    { name: "BrightCore", color: "#F97316" },
-    { name: "AstraSoft", color: "#2563EB" },
-    { name: "BlueRiver", color: "#8B5CF6" },
+    { name: "Bank of America", logo: boaLogo },
+    { name: "Company Cam", logo: companyCamLogo },
+    { name: "Fannie Mae", logo: fnmaLogo },
+    { name: "PPW", logo: ppwLogo },
+    { name: "VA", logo: vaLogo },
+    { name: "Wells Fargo", logo: wellsFargoLogo },
   ];
 
   return (
@@ -42,17 +48,20 @@ export function ClientStrip() {
 
       <div className="mt-6 overflow-hidden">
         <motion.div
-          className="flex items-center gap-10"
-          animate={reduceMotion ? undefined : { x: [0, -360] }}
-          transition={reduceMotion ? undefined : { duration: 18, repeat: Infinity, ease: "linear" }}
+          className="flex items-center gap-16"
+          animate={reduceMotion ? undefined : { x: [0, -600] }}
+          transition={reduceMotion ? undefined : { duration: 20, repeat: Infinity, ease: "linear" }}
         >
-          {[...clients, ...clients].map((c, idx) => (
+          {[...clients, ...clients, ...clients].map((c, idx) => (
             <div
               key={`${c.name}-${idx}`}
-              className="select-none whitespace-nowrap rounded-xl border bg-white px-5 py-3 text-sm font-semibold transition hover:scale-105"
-              style={{ borderColor: `${c.color}30`, color: c.color }}
+              className="flex-shrink-0 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             >
-              {c.name}
+              <img 
+                src={c.logo} 
+                alt={c.name} 
+                className="h-10 w-auto object-contain"
+              />
             </div>
           ))}
         </motion.div>
