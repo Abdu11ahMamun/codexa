@@ -23,24 +23,24 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "hello@codexa.dev",
+    value: "hello@codexaitbd.com",
     description: "We reply within 24 hours",
     color: "#2563EB",
-    href: "mailto:hello@codexa.dev",
+    href: "mailto:hello@codexaitbd.com",
   },
   {
     icon: Phone,
     title: "Call Us",
-    value: "01610-222111",
-    description: "01917-558034",
+    value: "+8801617 558034",
+    description: "",
     color: "#8B5CF6",
-    href: "tel:+8801610222111",
+    href: "tel:+8801617558034",
   },
   {
     icon: MapPin,
     title: "Visit Us",
-    value: "House# 9, Road# 13(New)",
-    description: "Dhanmondi, Dhaka - 1209",
+    value: "Codexa IT, House# 9, Road# 13",
+    description: "Dhaka - 1209",
     color: "#10B981",
     href: "https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6",
   },
@@ -252,8 +252,8 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Email</div>
-                      <a href="mailto:hello@codexa.dev" className="text-white hover:text-cyan-300 transition">
-                        hello@codexa.dev
+                      <a href="mailto:hello@codexaitbd.com" className="text-white hover:text-cyan-300 transition">
+                        hello@codexaitbd.com
                       </a>
                     </div>
                   </div>
@@ -263,14 +263,9 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Phone</div>
-                      <a href="tel:+8801610222111" className="text-white hover:text-violet-300 transition">
-                        01610-222111
+                      <a href="tel:+8801617558034" className="text-white hover:text-violet-300 transition">
+                        +8801617 558034
                       </a>
-                      <div>
-                        <a href="tel:+8801917558034" className="text-white hover:text-violet-300 transition">
-                          01917-558034
-                        </a>
-                      </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -279,8 +274,8 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Address</div>
-                      <div className="text-white">House# 9, Road# 13(New)</div>
-                      <div className="text-white/80 text-sm">Dhanmondi, Dhaka - 1209</div>
+                      <div className="text-white">Codexa IT, House# 9, Road# 13</div>
+                      <div className="text-white/80 text-sm">Dhaka - 1209</div>
                     </div>
                   </div>
                 </div>

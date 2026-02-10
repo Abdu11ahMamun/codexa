@@ -5,7 +5,6 @@ import { WhoWeAre } from "../components/home/WhoWeAre";
 import { Services } from "../components/home/Services";
 import { WhyChooseUs } from "../components/home/WhyChooseUs";
 import { GlobalReach } from "../components/home/GlobalReach";
-import { CTA } from "../components/home/CTA";
 import { Section } from "../components/shared/Section";
 import { ShapeBand } from "../components/shared/ShapeBand";
 
@@ -40,10 +39,6 @@ export function Home() {
 
       <Section className="py-16">
         <GlobalReach />
-      </Section>
-
-      <Section className="pb-16">
-        <CTA />
       </Section>
     </>
   );

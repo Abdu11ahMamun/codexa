@@ -1,5 +1,5 @@
 import { useReducedMotion } from "framer-motion";
-import { services } from "../../constants/services";
+import { homeServices } from "../../constants/services";
 import { Reveal } from "../shared/Reveal";
 import { ServiceCard } from "./ServiceCard";
 
@@ -37,7 +37,7 @@ export function Services() {
       </Reveal>
 
       <div className="mt-10 flex flex-wrap justify-center gap-7" style={{ perspective: 1200 }}>
-        {services.map((c, i) => (
+        {homeServices.map((c, i) => (
           <div key={c.t} className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]">
             <ServiceCard
               reduceMotion={!!reduceMotion}

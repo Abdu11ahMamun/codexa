@@ -1,52 +1,31 @@
 import { motion } from "framer-motion";
-import { BRAND } from "../../constants/brand";
 import logoImg from "../../assets/Codexa IT logo.png";
 
 export function Logo({ size = "default" }) {
   const sizeClasses = {
-    small: "h-10 w-10",
-    default: "h-12 w-12",
-    large: "h-14 w-14",
-    xlarge: "h-20 w-20"
-  }[size] || "h-12 w-12";
+    small: "h-7 w-16",
+    default: "h-8 w-20",
+    large: "h-9 w-24",
+    xlarge: "h-12 w-32"
+  }[size] || "h-8 w-20";
   
   const imgSize = {
-    small: "h-8 w-8",
-    default: "h-10 w-10",
-    large: "h-11 w-11",
-    xlarge: "h-16 w-16"
-  }[size] || "h-10 w-10";
+    small: "h-5 w-14",
+    default: "h-6 w-18",
+    large: "h-7 w-22",
+    xlarge: "h-10 w-28"
+  }[size] || "h-6 w-18";
 
   return (
     <motion.div 
-      className={`relative grid ${sizeClasses} place-items-center rounded-xl border border-slate-200 bg-slate-50`}
-      whileHover={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      className={`relative grid ${sizeClasses} place-items-center rounded-lg border border-slate-200/80 bg-white shadow-sm`}
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
     >
-      {/* Pulsating glow */}
-      <motion.div
-        className="absolute inset-0 rounded-xl opacity-0"
-        animate={{ 
-          opacity: [0, 0.3, 0],
-          scale: [1, 1.2, 1]
-        }}
-        transition={{ 
-          duration: 2, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-        style={{ 
-          background: `radial-gradient(circle, ${BRAND.primary}40, transparent)`,
-          filter: 'blur(8px)'
-        }}
-      />
-      
       <motion.img 
         src={logoImg}
         alt="Codexa Logo"
         className={`relative ${imgSize} object-contain`}
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.3 }}
       />
     </motion.div>
   );

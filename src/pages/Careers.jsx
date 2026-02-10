@@ -32,12 +32,6 @@ const benefits = [
     color: "#06B6D4",
   },
   {
-    icon: Heart,
-    title: "Health Benefits",
-    description: "Comprehensive health coverage for you and your family.",
-    color: "#F43F5E",
-  },
-  {
     icon: Gift,
     title: "Competitive Salary",
     description: "Industry-competitive compensation with performance bonuses.",
@@ -142,52 +136,6 @@ export function Careers() {
             </motion.div>
           ))}
         </div>
-      </Section>
-
-      <ShapeBand tone="blue" />
-
-      {/* Open Positions */}
-      <Section className="py-16">
-        <Reveal>
-          <div className="text-center mb-12">
-            <div 
-              className="inline-block text-xs font-semibold tracking-widest px-3 py-1 rounded-full"
-              style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.1), rgba(139,92,246,0.1))', color: '#2563EB' }}
-            >
-              OPEN POSITIONS
-            </div>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
-              Current Opportunities
-            </h2>
-          </div>
-        </Reveal>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="max-w-2xl mx-auto text-center py-16 px-8 rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-blue-50/30"
-        >
-          <div 
-            className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-            style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.1), rgba(139,92,246,0.1))' }}
-          >
-            <Briefcase className="h-10 w-10" style={{ color: '#2563EB' }} />
-          </div>
-          <h3 className="text-2xl font-semibold text-slate-900">Coming Soon</h3>
-          <p className="mt-4 text-slate-600 max-w-md mx-auto">
-            We're preparing exciting new opportunities. Check back soon or submit your application below to be considered for future openings.
-          </p>
-          <a
-            href="#apply"
-            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-xl text-sm font-semibold text-white transition hover:translate-y-[-2px]"
-            style={{ background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 100%)' }}
-          >
-            Submit Your Resume
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </motion.div>
       </Section>
 
       <ShapeBand tone="slate" />

@@ -80,7 +80,7 @@ export function Header({ scrolled }) {
                 whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Logo size="default" />
+                <Logo size="large" />
               </motion.div>
             </Link>
 

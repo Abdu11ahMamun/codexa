@@ -28,9 +28,8 @@ export function ClientStrip() {
             className="inline-block text-xs font-semibold tracking-widest px-2 py-0.5 rounded"
             style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.1), rgba(139,92,246,0.1))', color: '#8B5CF6' }}
           >
-            CLIENTS
+            AFFILIATIONS
           </div>
-          <div className="mt-1 text-sm text-slate-600">Trusted by teams across Bangladesh &amp; abroad</div>
         </div>
         <a 
           href="#contact" 

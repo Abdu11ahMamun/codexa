@@ -6,33 +6,6 @@ import { Section } from "../components/shared/Section";
 import { Reveal } from "../components/shared/Reveal";
 import { ShapeBand } from "../components/shared/ShapeBand";
 
-const teamMembers = [
-  {
-    name: "Abdullah Al Mamun",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-    color: "#2563EB",
-  },
-  {
-    name: "Sarah Rahman",
-    role: "Lead Developer",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
-    color: "#8B5CF6",
-  },
-  {
-    name: "Karim Hassan",
-    role: "UI/UX Designer",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
-    color: "#06B6D4",
-  },
-  {
-    name: "Fatima Akter",
-    role: "Project Manager",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
-    color: "#10B981",
-  },
-];
-
 const values = [
   {
     icon: Target,
@@ -58,7 +31,7 @@ const values = [
 ];
 
 const stats = [
-  { number: "50+", label: "Projects Completed", icon: Award },
+  { number: "2500+", label: "Projects Completed", icon: Award },
   { number: "30+", label: "Happy Clients", icon: Users },
   { number: "5+", label: "Years Experience", icon: Globe },
   { number: "99%", label: "Client Satisfaction", icon: CheckCircle },
@@ -183,55 +156,6 @@ export function About() {
               <h3 className="text-xl font-semibold text-slate-900">{value.title}</h3>
               <p className="mt-3 text-slate-600 leading-relaxed">{value.description}</p>
               <div className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br ${value.gradient} opacity-0 blur-2xl transition duration-500 group-hover:opacity-100`} />
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      <ShapeBand tone="slate" />
-
-      {/* Team Section */}
-      <Section className="py-16">
-        <Reveal>
-          <div className="text-center mb-12">
-            <div 
-              className="inline-block text-xs font-semibold tracking-widest px-3 py-1 rounded-full"
-              style={{ background: 'linear-gradient(90deg, rgba(139,92,246,0.1), rgba(6,182,212,0.1))', color: '#8B5CF6' }}
-            >
-              OUR TEAM
-            </div>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
-              Meet the Experts
-            </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
-              Our talented team of professionals brings together diverse expertise and a shared passion for delivering excellence.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teamMembers.map((member, i) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease, delay: i * 0.1 }}
-              className="group text-center"
-            >
-              <div className="relative mx-auto w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg transition group-hover:shadow-xl">
-                <img 
-                  src={member.image} 
-                  alt={member.name}
-                  className="w-full h-full object-cover transition group-hover:scale-105"
-                />
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition"
-                  style={{ background: member.color }}
-                />
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900">{member.name}</h3>
-              <p className="text-sm" style={{ color: member.color }}>{member.role}</p>
             </motion.div>
           ))}
         </div>

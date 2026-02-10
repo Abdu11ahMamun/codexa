@@ -7,8 +7,12 @@ import {
   Palette,
   ShieldCheck,
   Building2,
+  Briefcase,
+  Headphones,
+  TrendingUp,
 } from "lucide-react";
 
+// Services for the Services page (all services)
 export const services = [
   { 
     t: "IT Strategy & Advisory", 
@@ -57,5 +61,39 @@ export const services = [
     d: "Operational support services that reduce workload, control costs, and improve business focus.", 
     accent: "#14B8A6", 
     Icon: Building2 
+  },
+];
+
+// Services for the Home page (5 key services)
+export const homeServices = [
+  { 
+    t: "IT Consultancy", 
+    d: "Strategic technology guidance to help you choose the right solutions, optimize infrastructure, and accelerate digital transformation.", 
+    accent: "#2563EB", 
+    Icon: Briefcase 
+  },
+  { 
+    t: "Data Analytics", 
+    d: "Transform raw data into actionable insights with real-time dashboards, predictive analytics, and comprehensive reporting solutions.", 
+    accent: "#8B5CF6", 
+    Icon: BarChart3 
+  },
+  { 
+    t: "ITeS Industry", 
+    d: "End-to-end IT-enabled services including software development, technical support, and managed IT infrastructure solutions.", 
+    accent: "#0EA5E9", 
+    Icon: Headphones 
+  },
+  { 
+    t: "BPO", 
+    d: "Streamline operations and reduce costs with our business process outsourcing services covering back-office, customer support, and more.", 
+    accent: "#10B981", 
+    Icon: Building2 
+  },
+  { 
+    t: "Business Development", 
+    d: "Strategic growth solutions including market analysis, partnership development, and revenue optimization to scale your business.", 
+    accent: "#F97316", 
+    Icon: TrendingUp 
   },
 ];
