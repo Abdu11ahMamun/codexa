@@ -169,10 +169,10 @@ export function Services() {
                 backgroundClip: 'text',
               }}
             >
-              Comprehensive IT Solutions
+              What We Can Do For You?
             </h1>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-              From concept to deployment, we provide end-to-end technology services that drive business growth and digital transformation.
+              From strategy to execution, we provide comprehensive technology services designed to drive your business forward.
             </p>
           </div>
         </Reveal>

@@ -31,10 +31,10 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    value: "+880 1X XXX XXXX",
-    description: "Mon - Fri, 10am - 6pm",
+    value: "01610-222111",
+    description: "01917-558034",
     color: "#8B5CF6",
-    href: "tel:+8801XXXXXXXX",
+    href: "tel:+8801610222111",
   },
   {
     icon: MapPin,
@@ -177,11 +177,14 @@ export function Contact() {
                     className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 transition focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                   >
                     <option value="">Select a service</option>
-                    <option value="web">Web Development</option>
-                    <option value="app">App Development</option>
-                    <option value="consulting">IT Consultancy</option>
-                    <option value="design">UI/UX Design</option>
-                    <option value="bpo">BPO Services</option>
+                    <option value="strategy">IT Strategy & Advisory</option>
+                    <option value="software">Custom Software Engineering</option>
+                    <option value="web">Web Experience Development</option>
+                    <option value="mobile">Mobile Application Solutions</option>
+                    <option value="analytics">Business Intelligence & Analytics</option>
+                    <option value="design">User Experience & Interface Design</option>
+                    <option value="qa">Quality Assurance</option>
+                    <option value="bpo">Business Process Outsourcing</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
@@ -260,9 +263,14 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Phone</div>
-                      <a href="tel:+8801XXXXXXXX" className="text-white hover:text-violet-300 transition">
-                        +880 1X XXX XXXX
+                      <a href="tel:+8801610222111" className="text-white hover:text-violet-300 transition">
+                        01610-222111
                       </a>
+                      <div>
+                        <a href="tel:+8801917558034" className="text-white hover:text-violet-300 transition">
+                          01917-558034
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

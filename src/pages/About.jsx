@@ -86,10 +86,10 @@ export function About() {
                 backgroundClip: 'text',
               }}
             >
-              We Build Relationships, Not Just Solutions
+              Shaping Digital Solutions for Tomorrow
             </h1>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed">
-              Founded with a vision to transform how businesses leverage technology, Codexa has grown into a trusted partner for organizations seeking digital excellence.
+              Transforming ideas through smart technology — partnering with you for digital success.
             </p>
           </div>
         </Reveal>
@@ -107,16 +107,19 @@ export function About() {
                 OUR STORY
               </div>
               <h2 className="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
-                From Vision to Reality
+                Shaping Digital Solutions for Tomorrow
               </h2>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                The company has been formed by a group of professionals having vivid experience and wide exposure to Information Technology. People involved here are young qualified business graduates and qualified engineers from renowned universities across the globe.
+                Codexa IT was established by a team of experienced professionals with diverse expertise and deep industry exposure in Information Technology. Our team consists of driven business graduates and skilled engineers educated at respected institutions, bringing together technical knowledge and strategic insight to deliver impactful solutions.
               </p>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                We routinely access global skilled resources and leading-edge technology that is essential in creating a strong foundation of success for large-scale projects. Our team brings together diverse expertise, creativity, and a shared passion for technology.
+                We leverage global talent and modern technologies to support scalable, efficient project execution, creating reliable foundations for long-term success across projects of all sizes.
               </p>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                Since our inception, we have successfully delivered numerous projects across various industries, helping our clients achieve their digital transformation goals and stay ahead in the competitive market.
+              <p className="mt-4 text-slate-600 leading-relaxed font-medium" style={{ color: '#06B6D4' }}>
+                Fast Support for Fast-Moving Organizations
+              </p>
+              <p className="mt-2 text-slate-600 leading-relaxed">
+                Our sales and technical teams are committed to delivering responsive, high-quality support. We help organizations store, access, analyze, and visualize data efficiently — enabling better performance, faster decisions, and measurable business value.
               </p>
             </div>
           </Reveal>

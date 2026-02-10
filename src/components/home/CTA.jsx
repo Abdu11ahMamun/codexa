@@ -33,7 +33,7 @@ export function CTA() {
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(139,92,246,0.2)' }}>
                   <Phone className="h-4 w-4" style={{ color: '#8B5CF6' }} />
                 </span>
-                +880 1X XXX XXXX
+                01610-222111, 01917-558034
               </div>
               <div className="flex items-center gap-2 sm:col-span-2">
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(16,185,129,0.2)' }}>

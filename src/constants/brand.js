@@ -1,6 +1,6 @@
 export const BRAND = {
   name: "Codexa",
-  tagline: "Let's connect",
+  tagline: "Digital Solution",
   primary: "#2563EB",
   colors: {
     blue: '#2563EB',
