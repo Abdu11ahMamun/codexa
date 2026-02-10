@@ -29,7 +29,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">
-              Building relationships through innovative technology solutions. Your trusted partner in digital transformation.
+              Transforming ideas through smart technology — partnering with you for digital success.
             </p>
             <div className="mt-4 flex items-center gap-2">
               <SocialIcon href="#" label="Facebook" brand="facebook">
@@ -68,7 +68,7 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-bold" style={{ color: '#8B5CF6' }}>Services</h3>
             <ul className="mt-4 space-y-2">
-              {['Web Development', 'App Development', 'IT Consultancy', 'UI/UX Design'].map((service) => (
+              {['IT Strategy & Advisory', 'Custom Software Engineering', 'Web Experience Development', 'Mobile Application Solutions'].map((service) => (
                 <li key={service}>
                   <Link to="/services" className="text-sm text-slate-600 transition hover:text-cyan-600">
                     {service}
@@ -88,7 +88,10 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-600">
                 <Phone className="h-4 w-4 mt-0.5 shrink-0" style={{ color: '#8B5CF6' }} />
-                <span>+880 1X XXX XXXX</span>
+                <div className="flex flex-col">
+                  <span>01610-222111</span>
+                  <span>01917-558034</span>
+                </div>
               </li>
               <li className="flex items-start gap-2 text-sm text-slate-600">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" style={{ color: '#10B981' }} />

@@ -26,24 +26,19 @@ export function WhoWeAre() {
                 backgroundClip: 'text',
               }}
             >
-              We build relationship, not just another client
+              Shaping Digital Solutions for Tomorrow
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-              The company has been formed by a group of professionals having vivid experience and wide exposure to
-              Information Technology. People involved here are young qualified business graduates and qualified engineers
-              from renowned universities across the globe.
+              Codexa IT was established by a team of experienced professionals with diverse expertise and deep industry exposure in Information Technology. Our team consists of driven business graduates and skilled engineers educated at respected institutions, bringing together technical knowledge and strategic insight to deliver impactful solutions.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-              We routinely access global skilled resources and leading-edge technology that is essential in creating a
-              strong foundation of success for large-scale projects.
+              We leverage global talent and modern technologies to support scalable, efficient project execution, creating reliable foundations for long-term success across projects of all sizes.
             </p>
 
             <div className="mt-6 rounded-2xl border border-cyan-200/50 bg-gradient-to-br from-cyan-50/50 to-blue-50/30 p-5">
-              <div className="text-sm font-semibold" style={{ color: '#06B6D4' }}>We provide the fastest service</div>
+              <div className="text-sm font-semibold" style={{ color: '#06B6D4' }}>Fast Support for Fast-Moving Organizations</div>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                We have sales and technical support teams committed to providing the highest quality services. We help
-                organizations store, access, consume, and visualize data — so businesses can compete aggressively,
-                improve performance, and accelerate time to value.
+                Our sales and technical teams are committed to delivering responsive, high-quality support. We help organizations store, access, analyze, and visualize data efficiently — enabling better performance, faster decisions, and measurable business value.
               </p>
             </div>
 

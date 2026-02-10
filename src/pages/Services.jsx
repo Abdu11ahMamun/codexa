@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ease, BRAND } from "../constants/brand";
@@ -57,6 +57,96 @@ const features = [
   "Regular progress updates",
 ];
 
+function ServiceCard({ service, delay, reduceMotion }) {
+  const accent = service.accent;
+  const Icon = service.Icon;
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={{ duration: 0.65, ease, delay }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -12,
+              rotateX: 8,
+              rotateY: 8,
+              scale: 1.025,
+            }
+      }
+      className="group relative h-full"
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      <div
+        className="absolute -inset-[1px] rounded-[30px] opacity-70"
+        style={{
+          background: `linear-gradient(135deg, ${accent}33, rgba(139,92,246,0.15), rgba(6,182,212,0.12))`,
+        }}
+      />
+
+      <div className="absolute -inset-3 rounded-[32px] opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" style={{ background: `${accent}25` }} />
+
+      <div className="relative overflow-hidden rounded-[30px] border border-slate-200 bg-white p-7 shadow-[0_22px_55px_rgba(2,6,23,0.11)] h-full flex flex-col">
+        <div className="pointer-events-none absolute -right-8 -top-8">
+          <div className="relative h-32 w-32">
+            <div className="absolute inset-0 rounded-full border border-slate-200/70 bg-white/30" />
+            <div className="absolute inset-3 rounded-full border border-slate-200/60 bg-white/35" />
+            <div
+              className="absolute inset-6 rounded-full border opacity-80"
+              style={{ borderColor: `${accent}66`, background: `linear-gradient(135deg, ${accent}15, ${accent}08)` }}
+            />
+          </div>
+        </div>
+
+        <div
+          className="grid h-14 w-14 place-items-center rounded-2xl border bg-gradient-to-br from-white to-slate-50"
+          style={{ borderColor: `${accent}30`, boxShadow: `0 10px 22px ${accent}20` }}
+        >
+          <Icon className="h-7 w-7" style={{ color: accent }} />
+        </div>
+
+        <div className="mt-5 text-lg font-semibold tracking-tight text-slate-900">{service.t}</div>
+        <div className="mt-2 text-sm leading-relaxed text-slate-600 flex-grow">{service.d}</div>
+
+        <Link
+          to="/contact"
+          className="mt-6 inline-flex items-center gap-1 text-sm font-medium transition"
+          style={{ color: accent }}
+        >
+          Learn More
+          <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+        </Link>
+
+        <div
+          className="pointer-events-none absolute -left-12 -bottom-12 h-44 w-44 rounded-full opacity-0 blur-2xl transition duration-500 group-hover:opacity-100"
+          style={{ background: `${accent}18` }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+function ServicesGrid() {
+  const reduceMotion = useReducedMotion();
+  
+  return (
+    <div className="flex flex-wrap justify-center gap-7" style={{ perspective: 1200 }}>
+      {services.map((service, i) => (
+        <div key={service.t} className="w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] xl:w-[calc(25%-21px)]">
+          <ServiceCard
+            service={service}
+            delay={i * 0.05}
+            reduceMotion={!!reduceMotion}
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function Services() {
   return (
     <>
@@ -90,42 +180,7 @@ export function Services() {
 
       {/* Services Grid */}
       <Section className="pb-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {services.map((service, i) => (
-            <motion.div
-              key={service.t}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease, delay: i * 0.05 }}
-              whileHover={{ y: -5 }}
-              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-lg cursor-pointer"
-              style={{ borderColor: `${service.accent}20` }}
-            >
-              <div 
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition group-hover:scale-110"
-                style={{ background: `${service.accent}15` }}
-              >
-                <service.Icon className="h-7 w-7" style={{ color: service.accent }} />
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900">{service.t}</h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{service.d}</p>
-              
-              <motion.div 
-                className="mt-4 flex items-center gap-1 text-sm font-medium"
-                style={{ color: service.accent }}
-              >
-                Learn More
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </motion.div>
-
-              <div 
-                className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-0 blur-2xl transition duration-500 group-hover:opacity-30"
-                style={{ background: service.accent }}
-              />
-            </motion.div>
-          ))}
-        </div>
+        <ServicesGrid />
       </Section>
 
       <ShapeBand tone="blue" />

@@ -43,10 +43,10 @@ export function WhyChooseUs() {
               backgroundClip: 'text',
             }}
           >
-            Your Dream. Our Mission.
+            Turning Vision into Reliable Outcomes
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
-            Taking the first step is the biggest hurdle — we make it easier with skilled people and reliable delivery.
+            Every successful project begins with the right guidance — we support that journey with experienced professionals and dependable execution.
           </p>
         </div>
       </Reveal>
