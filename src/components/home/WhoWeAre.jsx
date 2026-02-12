@@ -52,7 +52,7 @@ export function WhoWeAre() {
                 <ArrowRight className="h-4 w-4" />
               </a>
               <div className="flex items-center gap-2">
-                <SocialIcon href="#" label="Facebook" brand="facebook">
+                <SocialIcon href="https://www.facebook.com/share/1D9nKsKLrB/" label="Facebook" brand="facebook">
                   <Facebook className="h-4 w-4" />
                 </SocialIcon>
                 <SocialIcon href="#" label="LinkedIn" brand="linkedin">

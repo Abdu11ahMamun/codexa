@@ -133,7 +133,7 @@ export function Header({ scrolled }) {
               </button>
               
               <div className="hidden items-center gap-1 sm:flex">
-                <SocialIcon href="#" label="Facebook" brand="facebook">
+                <SocialIcon href="https://www.facebook.com/share/1D9nKsKLrB/" label="Facebook" brand="facebook">
                   <Facebook className="h-4 w-4" />
                 </SocialIcon>
                 <SocialIcon href="#" label="LinkedIn" brand="linkedin">

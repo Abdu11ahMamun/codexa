@@ -283,7 +283,7 @@ export function Contact() {
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <div className="text-sm text-white/60 mb-4">Follow Us</div>
                   <div className="flex items-center gap-3">
-                    <SocialIcon href="#" label="Facebook" brand="facebook">
+                    <SocialIcon href="https://www.facebook.com/share/1D9nKsKLrB/" label="Facebook" brand="facebook">
                       <Facebook className="h-4 w-4" />
                     </SocialIcon>
                     <SocialIcon href="#" label="LinkedIn" brand="linkedin">
