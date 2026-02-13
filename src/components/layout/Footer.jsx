@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
 import { BRAND } from "../../constants/brand";
 import { Logo } from "../shared/Logo";
 import { SocialIcon } from "../shared/SocialIcon";
@@ -23,11 +23,8 @@ export function Footer() {
                 <SocialIcon href="https://www.facebook.com/share/1D9nKsKLrB/" label="Facebook" brand="facebook">
                   <Facebook className="h-4 w-4" />
                 </SocialIcon>
-                <SocialIcon href="#" label="LinkedIn" brand="linkedin">
+                <SocialIcon href="https://www.linkedin.com/company/codexa-it/" label="LinkedIn" brand="linkedin">
                   <Linkedin className="h-4 w-4" />
-                </SocialIcon>
-                <SocialIcon href="#" label="Instagram" brand="instagram">
-                  <Instagram className="h-4 w-4" />
                 </SocialIcon>
               </div>
             </div>

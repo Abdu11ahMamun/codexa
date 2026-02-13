@@ -1,4 +1,4 @@
-import { ArrowRight, Facebook, Linkedin, Instagram } from "lucide-react";
+import { ArrowRight, Facebook, Linkedin } from "lucide-react";
 import { Reveal } from "../shared/Reveal";
 import { SocialIcon } from "../shared/SocialIcon";
 import aboutImage from "../../assets/Codexa Slide 2.png";
@@ -55,11 +55,8 @@ export function WhoWeAre() {
                 <SocialIcon href="https://www.facebook.com/share/1D9nKsKLrB/" label="Facebook" brand="facebook">
                   <Facebook className="h-4 w-4" />
                 </SocialIcon>
-                <SocialIcon href="#" label="LinkedIn" brand="linkedin">
+                <SocialIcon href="https://www.linkedin.com/company/codexa-it/" label="LinkedIn" brand="linkedin">
                   <Linkedin className="h-4 w-4" />
-                </SocialIcon>
-                <SocialIcon href="#" label="Instagram" brand="instagram">
-                  <Instagram className="h-4 w-4" />
                 </SocialIcon>
               </div>
             </div>

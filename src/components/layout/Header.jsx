@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Facebook, Linkedin, Instagram, Menu, X } from "lucide-react";
+import { ArrowRight, Facebook, Linkedin, Menu, X } from "lucide-react";
 import { BRAND, ease } from "../../constants/brand";
 import { cn } from "../../utils/helpers";
 import { Logo } from "../shared/Logo";
@@ -136,11 +136,8 @@ export function Header({ scrolled }) {
                 <SocialIcon href="https://www.facebook.com/share/1D9nKsKLrB/" label="Facebook" brand="facebook">
                   <Facebook className="h-4 w-4" />
                 </SocialIcon>
-                <SocialIcon href="#" label="LinkedIn" brand="linkedin">
+                <SocialIcon href="https://www.linkedin.com/company/codexa-it/" label="LinkedIn" brand="linkedin">
                   <Linkedin className="h-4 w-4" />
-                </SocialIcon>
-                <SocialIcon href="#" label="Instagram" brand="instagram">
-                  <Instagram className="h-4 w-4" />
                 </SocialIcon>
               </div>
             </div>
