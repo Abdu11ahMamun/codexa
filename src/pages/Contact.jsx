@@ -192,22 +192,6 @@ export function Contact() {
                   placeholder="Tell us about your project, goals, and any specific requirements..." 
                   rows={5}
                 />
-                
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-700">
-                    Budget Range
-                  </label>
-                  <select 
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 transition focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-                  >
-                    <option value="">Select budget range</option>
-                    <option value="small">$1,000 - $5,000</option>
-                    <option value="medium">$5,000 - $15,000</option>
-                    <option value="large">$15,000 - $50,000</option>
-                    <option value="enterprise">$50,000+</option>
-                    <option value="discuss">Let's Discuss</option>
-                  </select>
-                </div>
 
                 <button
                   type="submit"
