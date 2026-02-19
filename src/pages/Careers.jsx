@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -16,6 +17,7 @@ import { Reveal } from "../components/shared/Reveal";
 import { ShapeBand } from "../components/shared/ShapeBand";
 import { Field } from "../components/shared/Field";
 import { FieldText } from "../components/shared/FieldText";
+import { sendEmail } from "../utils/emailService";
 
 const benefits = [
   {
@@ -46,6 +48,46 @@ const culturePoints = [
 ];
 
 export function Careers() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    position: "",
+    portfolio: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ state: "idle", message: "" });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus({ state: "sending", message: "Submitting your application..." });
+
+    const result = await sendEmail(formData, "Careers Application");
+
+    if (result?.success) {
+      setStatus({ state: "success", message: "Application sent successfully." });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        position: "",
+        portfolio: "",
+        message: "",
+      });
+      return;
+    }
+
+    setStatus({
+      state: "error",
+      message: result?.message || "Failed to send. Please try again.",
+    });
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -160,19 +202,43 @@ export function Careers() {
             transition={{ duration: 0.6, ease }}
             className="p-8 rounded-2xl border border-slate-200 bg-white shadow-sm"
           >
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Full Name" placeholder="Your full name" />
-                <Field label="Email" placeholder="your@email.com" />
+                <Field
+                  label="Full Name"
+                  placeholder="Your full name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <Field
+                  label="Email"
+                  placeholder="your@email.com"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Phone" placeholder="+880 1XX XXX XXXX" />
+                <Field
+                  label="Phone"
+                  placeholder="+880 1XX XXX XXXX"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-slate-700">
                     Position Applying For
                   </label>
                   <select 
                     className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 transition focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    name="position"
+                    value={formData.position}
+                    onChange={handleChange}
                   >
                     <option value="">Select a position</option>
                     <option value="developer">Developer</option>
@@ -182,8 +248,22 @@ export function Careers() {
                   </select>
                 </div>
               </div>
-              <Field label="Portfolio / LinkedIn URL" placeholder="https://" />
-              <FieldText label="Cover Letter" placeholder="Tell us about yourself, your experience, and why you want to join Codexa..." rows={5} />
+              <Field
+                label="Portfolio / LinkedIn URL"
+                placeholder="https://"
+                name="portfolio"
+                value={formData.portfolio}
+                onChange={handleChange}
+              />
+              <FieldText
+                label="Cover Letter"
+                placeholder="Tell us about yourself, your experience, and why you want to join Codexa..."
+                rows={5}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
               
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-slate-700">
@@ -198,16 +278,33 @@ export function Careers() {
                     <div className="text-xs text-slate-500 mt-1">PDF, DOC, DOCX (max 5MB)</div>
                   </label>
                 </div>
+                <p className="mt-2 text-xs text-slate-500">
+                  File uploads are not included yet; we will reply to collect your resume.
+                </p>
               </div>
 
               <button
                 type="submit"
+                disabled={status.state === "sending"}
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white transition hover:translate-y-[-2px]"
                 style={{ background: 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 100%)' }}
               >
-                Submit Application
+                {status.state === "sending" ? "Submitting..." : "Submit Application"}
                 <Send className="h-4 w-4" />
               </button>
+              {status.state !== "idle" && (
+                <p
+                  className={`text-xs text-center ${
+                    status.state === "success"
+                      ? "text-emerald-600"
+                      : status.state === "error"
+                      ? "text-rose-600"
+                      : "text-slate-500"
+                  }`}
+                >
+                  {status.message}
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
