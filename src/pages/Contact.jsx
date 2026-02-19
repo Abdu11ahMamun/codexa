@@ -30,10 +30,10 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    value: "+8801617 558034",
+    value: "+8801610-222111",
     description: "",
     color: "#8B5CF6",
-    href: "tel:+8801617558034",
+    href: "tel:+8801610222111",
   },
   {
     icon: MapPin,
@@ -246,8 +246,8 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Phone</div>
-                      <a href="tel:+8801617558034" className="text-white hover:text-violet-300 transition">
-                        +8801617 558034
+                      <a href="tel:+8801610222111" className="text-white hover:text-violet-300 transition">
+                        +8801610-222111
                       </a>
                     </div>
                   </div>

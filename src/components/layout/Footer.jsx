@@ -77,7 +77,7 @@ export function Footer() {
                   <span className="rounded-full bg-violet-50 p-2 sm:bg-transparent">
                     <Phone className="h-4 w-4 text-violet-500 sm:text-violet-600" />
                   </span>
-                  <span className="text-left">+8801617 558034</span>
+                  <span className="text-left">+8801610-222111</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm text-slate-600">
                   <span className="rounded-full bg-emerald-50 p-2 sm:bg-transparent">
