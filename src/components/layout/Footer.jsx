@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Linkedin } from "lucide-react";
 import { BRAND } from "../../constants/brand";
+import { PHONE_NUMBERS } from "../../constants/phones";
 import { Logo } from "../shared/Logo";
 import { SocialIcon } from "../shared/SocialIcon";
 
@@ -73,11 +74,21 @@ export function Footer() {
                   </span>
                   <span className="text-left">hello@codexaitbd.com</span>
                 </li>
-                <li className="flex items-start gap-3 text-sm text-slate-600 sm:items-center">
+                <li className="flex items-start gap-3 text-sm text-slate-600 sm:items-start">
                   <span className="rounded-full bg-violet-50 p-2 sm:bg-transparent">
                     <Phone className="h-4 w-4 text-violet-500 sm:text-violet-600" />
                   </span>
-                  <span className="text-left">+8801610-222111</span>
+                  <div className="text-left flex flex-col gap-1">
+                    {PHONE_NUMBERS.map((phone) => (
+                      <a
+                        key={phone.value}
+                        href={phone.href}
+                        className="transition hover:text-violet-600"
+                      >
+                        {phone.value}
+                      </a>
+                    ))}
+                  </div>
                 </li>
                 <li className="flex items-start gap-3 text-sm text-slate-600">
                   <span className="rounded-full bg-emerald-50 p-2 sm:bg-transparent">

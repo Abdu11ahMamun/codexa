@@ -19,6 +19,7 @@ import { Field } from "../components/shared/Field";
 import { FieldText } from "../components/shared/FieldText";
 import { SocialIcon } from "../components/shared/SocialIcon";
 import { sendEmail } from "../utils/emailService";
+import { PHONE_NUMBERS } from "../constants/phones";
 
 const contactInfo = [
   {
@@ -32,10 +33,18 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    value: "+8801610-222111",
+    value: (
+      <>
+        {PHONE_NUMBERS.map((phone) => (
+          <span key={phone.value} className="block">
+            {phone.value}
+          </span>
+        ))}
+      </>
+    ),
     description: "",
     color: "#8B5CF6",
-    href: "tel:+8801610222111",
+    href: PHONE_NUMBERS[0].href,
   },
   {
     icon: MapPin,
@@ -337,9 +346,17 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-sm text-white/60">Phone</div>
-                      <a href="tel:+8801610222111" className="text-white hover:text-violet-300 transition">
-                        +8801610-222111
-                      </a>
+                      <div className="flex flex-col gap-1">
+                        {PHONE_NUMBERS.map((phone) => (
+                          <a
+                            key={phone.value}
+                            href={phone.href}
+                            className="text-white transition hover:text-violet-300"
+                          >
+                            {phone.value}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

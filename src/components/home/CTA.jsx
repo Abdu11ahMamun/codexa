@@ -2,6 +2,7 @@ import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { Reveal } from "../shared/Reveal";
 import { Field } from "../shared/Field";
 import { FieldText } from "../shared/FieldText";
+import { PHONE_NUMBERS } from "../constants/phones";
 
 export function CTA() {
   return (
@@ -29,11 +30,21 @@ export function CTA() {
                 </span>
                 hello@codexaitbd.com
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-start gap-2">
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(139,92,246,0.2)' }}>
                   <Phone className="h-4 w-4" style={{ color: '#8B5CF6' }} />
                 </span>
-                +8801610-222111
+                <div className="flex flex-col gap-1">
+                  {PHONE_NUMBERS.map((phone) => (
+                    <a
+                      key={phone.value}
+                      href={phone.href}
+                      className="text-white/85 transition hover:text-white"
+                    >
+                      {phone.value}
+                    </a>
+                  ))}
+                </div>
               </div>
               <div className="flex items-center gap-2 sm:col-span-2">
                 <span className="p-1 rounded-lg" style={{ background: 'rgba(16,185,129,0.2)' }}>
