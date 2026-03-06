@@ -215,7 +215,7 @@ export function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Field
                     label="Your Name"
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -223,7 +223,7 @@ export function Contact() {
                   />
                   <Field
                     label="Email Address"
-                    placeholder="john@company.com"
+                    placeholder="you@company.com"
                     name="email"
                     type="email"
                     value={formData.email}
