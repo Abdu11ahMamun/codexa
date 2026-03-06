@@ -59,7 +59,7 @@ export function ClientStrip() {
               <img 
                 src={c.logo} 
                 alt={c.name} 
-                className="h-10 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
             </div>
           ))}

@@ -142,31 +142,31 @@ export function GlobalReach() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease }}
-        className="relative mx-auto max-w-4xl -mt-8 z-10"
+        className="relative mx-auto max-w-5xl -mt-8 z-10"
       >
         <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-slate-100 overflow-hidden">
           <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-            {/* Card 1 - We have an IT department */}
+            {/* Card 1 - Empower Your IT Team */}
             <div className="p-8 flex items-start gap-6">
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-slate-900" style={{ color: BRAND.colors.navy }}>
-                  We have an IT department
+                  Empower Your IT Team
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  Partner with us for IT management services to grow your existing IT infrastructure
+                  Add depth to your technology strategy with expert support, advanced tools, and scalable solutions that grow with your organization.
                 </p>
               </div>
               <UserIcon hasCheck={true} />
             </div>
 
-            {/* Card 2 - We don't have an IT department */}
+            {/* Card 2 - Your Technology Partner from Day One */}
             <div className="p-8 flex items-start gap-6">
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-slate-900" style={{ color: BRAND.colors.navy }}>
-                  We don't have an IT department
+                  Your Technology Partner from Day One
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  Work with us as your one-stop shop for IT management and solutions
+                  No in-house IT? No problem. We design, manage, and protect your entire IT ecosystem — efficiently and securely.
                 </p>
               </div>
               <UserIcon hasCheck={false} />
