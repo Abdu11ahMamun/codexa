@@ -15,6 +15,80 @@ import { Services } from "./pages/Services";
 import { Careers } from "./pages/Careers";
 import { Contact } from "./pages/Contact";
 
+const SITE_URL = "https://www.codexaitbd.com";
+
+const SEO_BY_PATH = {
+  "/": {
+    title: "Codexa IT - Digital Solutions",
+    description:
+      "Codexa IT delivers end-to-end IT services including software development, technical support, and managed infrastructure solutions.",
+  },
+  "/about": {
+    title: "About Codexa IT | Technology Partner for Business Growth",
+    description:
+      "Learn about Codexa IT, our mission, and how our experts help organizations with modern technology, support, and digital transformation.",
+  },
+  "/services": {
+    title: "IT Services | Codexa IT",
+    description:
+      "Explore Codexa IT services including software engineering, web and mobile development, analytics, QA, and IT strategy advisory.",
+  },
+  "/careers": {
+    title: "Careers at Codexa IT",
+    description:
+      "Join Codexa IT and build impactful digital products with a collaborative team across engineering, design, and business operations.",
+  },
+  "/contact": {
+    title: "Contact Codexa IT",
+    description:
+      "Contact Codexa IT for software projects, IT support, and digital solutions. Reach us by email, phone, or visit our Dhaka office.",
+  },
+};
+
+function setMetaTag(selector, attributes, content) {
+  let tag = document.head.querySelector(selector);
+  if (!tag) {
+    tag = document.createElement("meta");
+    Object.entries(attributes).forEach(([key, value]) => {
+      tag.setAttribute(key, value);
+    });
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute("content", content);
+}
+
+function SeoManager() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const seo = SEO_BY_PATH[pathname] || SEO_BY_PATH["/"];
+    const canonicalUrl = `${SITE_URL}${pathname === "/" ? "" : pathname}`;
+
+    document.title = seo.title;
+
+    setMetaTag('meta[name="description"]', { name: "description" }, seo.description);
+    setMetaTag('meta[property="og:title"]', { property: "og:title" }, seo.title);
+    setMetaTag('meta[property="og:description"]', { property: "og:description" }, seo.description);
+    setMetaTag('meta[property="og:type"]', { property: "og:type" }, "website");
+    setMetaTag('meta[property="og:url"]', { property: "og:url" }, canonicalUrl);
+    setMetaTag('meta[property="og:image"]', { property: "og:image" }, `${SITE_URL}/favicon.png`);
+    setMetaTag('meta[name="twitter:card"]', { name: "twitter:card" }, "summary");
+    setMetaTag('meta[name="twitter:title"]', { name: "twitter:title" }, seo.title);
+    setMetaTag('meta[name="twitter:description"]', { name: "twitter:description" }, seo.description);
+    setMetaTag('meta[name="twitter:image"]', { name: "twitter:image" }, `${SITE_URL}/favicon.png`);
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", canonicalUrl);
+  }, [pathname]);
+
+  return null;
+}
+
 // Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -41,6 +115,7 @@ function AppContent() {
       <Background />
       <Header scrolled={scrolled} />
       <ScrollToTop />
+      <SeoManager />
 
       <main>
         <Routes>
