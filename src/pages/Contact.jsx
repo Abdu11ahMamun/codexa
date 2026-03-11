@@ -53,15 +53,7 @@ const contactInfo = [
     description: "Dhanmondi, Dhaka - 1209",
     color: "#10B981",
     href: "https://maps.app.goo.gl/m2tjpmQ3RqmbuS3S6",
-  },
-  {
-    icon: Clock,
-    title: "Working Hours",
-    value: "Sun - Thu: 10am - 6pm",
-    description: "Weekend: Closed",
-    color: "#F97316",
-    href: "#",
-  },
+  }
 ];
 
 const faqs = [
